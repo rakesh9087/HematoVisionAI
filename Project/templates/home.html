@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HematoVision AI | Blood Cell Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <h2 style="font-size: 50px; color: gold;">🩸 HematoVision AI</h2>
+        <p style="font-size: 50px; color: gold;">AI Powered Blood Cell Analysis</p>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1 style="font-size: 50px;">Advanced Blood Cell Classification using Artificial Intelligence</h1>
+            <p style="font-size: 40px;">
+                Upload microscopic blood smear images and let our deep learning model
+                instantly classify blood cells with high accuracy.
+            </p>
+        </div>
+    </section>
+
+    <!-- MAIN CONTAINER -->
+    <div class="container" style="height: 1000px; ">
+
+        <div class="card">
+            <h2 style="font-size: 60px; color: black;">Upload Blood Cell Image</h2>
+            <p class="subtitle">Supported formats: JPG, JPEG, PNG</p>
+
+            <form id="upload-form" method="POST"
+                  enctype="multipart/form-data"
+                  action="/predict">
+
+                <div class="upload-box">
+                    <input type="file" id="file" name="file" accept="image/*" required>
+
+                    <label for="file" class="upload-label" style="height: 500px;">
+                        <div class="upload-content" style=" margin-top: 200px;">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                width="40" height="40"
+                                fill="none" stroke="currentColor"
+                                stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+
+                            <span style="text-align: center;">Click to Upload Image</span>
+                        </div>
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn" style="font-size: 30px;">
+                    Classify Blood Cell
+                </button>
+
+            </form>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 HematoVision AI | Medical Image Intelligence System</p>
+    </footer>
+
+</body>
+</html>

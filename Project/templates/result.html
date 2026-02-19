@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HematoVision AI - Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <h2 style="font-size: 50px; color: gold;">🩸 HematoVision AI</h2>
+    <p style="font-size: 50px; color: gold;">Blood Cell Analysis Result</p>
+</nav>
+
+<div class="containerr result-container">
+
+    <h1 class="page-title">Classification Result</h1>
+
+    <div class="result-grid">
+
+        <!-- IMAGE SECTION -->
+        <div class="image-card">
+            <h3 style="font-size: 25px;">Uploaded Image</h3>
+            <img src="{{ url_for('static', filename='images/' + image_file) }}"
+                 alt="Uploaded Image" style="border: 5px solid #0f4c81; padding: 20px;">
+        </div>
+
+        <!-- RESULT SECTION -->
+        <div class="prediction-card">
+
+            <h3 style="font-size: 50px;">Prediction</h3>
+
+            <p class="prediction-label" style="font-size: 40px; margin-top: -10px;">Detected Cell Type</p>
+            <h2 class="prediction" style="font-size: 45px; margin-top: -10px; color: gold;">{{ prediction }}</h2>
+
+            <!-- Confidence Bar -->
+            <div class="confidence-box">
+                <p style="font-size: 25px; margin-top: -10px;">Confidence: {{ confidence_text }}</p>
+
+                <div class="progress-bar">
+                    <div class="progress"
+                         style="width: {{ confidence }}%; ">
+                    </div>
+                </div>
+            </div>
+
+            <!-- CELL INFORMATION -->
+            <div class="cell-info">
+                <h4 style="font-size: 25px;">Medical Information</h4>
+
+                {% if prediction == "Eosinophil" %}
+                <p>Eosinophils help fight parasitic infections and play an important role in allergic responses.</p>
+
+                {% elif prediction == "Lymphocyte" %}
+                <p>Lymphocytes are immune cells responsible for antibody production and adaptive immune defense.</p>
+
+                {% elif prediction == "Monocyte" %}
+                <p>Monocytes are large white blood cells that transform into macrophages to remove pathogens.</p>
+
+                {% else %}
+                <p>Neutrophils are the most abundant white blood cells and provide first-line defense against infections.</p>
+                {% endif %}
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ACTION BUTTON -->
+    <div class="actions">
+        <a href="{{ url_for('home') }}" class="btn" style="text-decoration: none;">
+            Analyze Another Image
+        </a>
+    </div>
+
+</div>
+
+<footer>
+    <p style="font-size: 25px; margin-top: -10px;">© 2026 HematoVision AI | Intelligent Hematology Assistant</p>
+</footer>
+
+</body>
+</html>

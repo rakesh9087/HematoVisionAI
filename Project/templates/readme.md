@@ -1,1 +1,1 @@
-template files for this project
+This folder contains html files
